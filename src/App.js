@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import React from 'react'
+import {Route, Routes, Navigate} from 'react-router-dom';
 import './App.css';
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import ToDoPage from './toDoPage/ToDoPage';
+import 'antd/dist/reset.css'
+import ProtectedRoute from './services/ProtectedRoute';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Routes>
+      {/* Redirect root path to /landing */}
+      <Route path='/' element={<Navigate to='/landing' replace />} /> 
+      
+      <Route path='/landing' element={<Landing />} /> 
+      <Route path='/login' element={<Login />} /> 
+      <Route path='/register' element={<Register />} /> 
+      {/* Protected Route */}
+        <Route 
+          path="/todo" 
+          element={
+            <ProtectedRoute>
+              <ToDoPage />
+            </ProtectedRoute>
+          } 
+        />
+
+      {/* Catch all - redirect to landing */}
+      <Route path='*' element={<Navigate to='/landing' replace />} />
+    </Routes>
+    
+  )
 }
 
-export default App;
+export default App
