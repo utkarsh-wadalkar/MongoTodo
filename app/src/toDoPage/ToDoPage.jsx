@@ -12,7 +12,7 @@ function ToDoPage() {
   const [editingTodo, setEditingTodo] = useState(null);
   const [isAddingTodo, setIsAddingTodo] = useState(false);
 
-  const API_URL = 'http://localhost:8000';
+  const API_URL = 'https://mongotodo-9k7x.onrender.com';
 
   const getAuthToken = () => {
     return localStorage.getItem("authToken");
