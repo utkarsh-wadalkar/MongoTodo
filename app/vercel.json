@@ -1,0 +1,39 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "server.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "app/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/register",
+            "dest": "server.js"
+        },
+        {
+            "src": "/login",
+            "dest": "server.js"
+        },
+        {
+            "src": "/todos(.*)",
+            "dest": "server.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "app/build/$1"
+        }
+    ],
+    "env": {
+        "DB_URL": "@db_url",
+        "JWT_SECRET": "@jwt_secret",
+        "PORT": "8000"
+    }
+}
