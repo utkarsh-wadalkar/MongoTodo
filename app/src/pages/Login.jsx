@@ -52,7 +52,7 @@ function Login() {
       
     } catch (err) {
       //console.error('Login error: ',err); //for debugging
-      message.error(err.response?.data?.error || "Login failed");
+      message.error(err.response?.data?.error);
     } finally {
       setLoading(false);
     }
