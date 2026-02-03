@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
-        <div className={styles.logo} onClick={() => navigate('/')}>
+        <div className={styles.logo} onClick={() => navigate('/todo')}>
           <span className={styles.logoIcon}>✓</span>
           <span className={styles.logoText}>ToDo</span>
         </div>
