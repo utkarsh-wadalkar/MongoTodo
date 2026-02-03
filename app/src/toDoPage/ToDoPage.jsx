@@ -59,8 +59,10 @@ function ToDoPage() {
       setTodos([response.data.todo, ...todos]);
       setNewTodo({ title: '', description: '' });
       setIsAddingTodo(false);
+      console.log(response);
       message.success('Todo added successfully');
     } catch (error) {
+      console.log(error);
       console.error('Error adding todo:', error);
       message.error('Failed to add todo');
     }
