@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import TodoNavbar from '../components/TodoNavbar';
 import styles from './ToDoPage.module.css';
 import { message } from 'antd';
@@ -14,19 +14,11 @@ function ToDoPage() {
 
   const API_URL = 'http://localhost:8000';
 
-  useEffect(() => {
-    const userData = localStorage.getItem("username");
-    if (userData) {
-      setUsername(userData);
-    }
-    fetchTodos();
-  }, []);
-
   const getAuthToken = () => {
     return localStorage.getItem("authToken");
   };
 
-  const fetchTodos = async () => {
+  const fetchTodos = useCallback(async () => {
     try {
       setLoading(true);
       const token = getAuthToken();
@@ -40,7 +32,15 @@ function ToDoPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [API_URL]);
+
+  useEffect(() => {
+    const userData = localStorage.getItem("username");
+    if (userData) {
+      setUsername(userData);
+    }
+    fetchTodos();
+  }, [fetchTodos]);
 
   const handleAddTodo = async (e) => {
     e.preventDefault();
