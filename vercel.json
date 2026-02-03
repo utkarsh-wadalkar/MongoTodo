@@ -30,10 +30,5 @@
             "src": "/(.*)",
             "dest": "app/build/$1"
         }
-    ],
-    "env": {
-        "DB_URL": "@db_url",
-        "JWT_SECRET": "@jwt_secret",
-        "PORT": "8000"
-    }
+    ]
 }
