@@ -13,6 +13,22 @@ app.use(cors());  //app.use() is used to write express middlwere that u want to 
 app.use(express.json());  //we will be sending data from frontend in form of json and store in DB. to understand we need to use this middlewere
 
 
+// Root route
+app.get('/', (req, res) => {
+    res.json({
+        message: 'MongoTodo Backend API is running!',
+        endpoints: {
+            register: 'POST /register',
+            login: 'POST /login',
+            todos: 'GET /todos (requires auth)',
+            createTodo: 'POST /todos (requires auth)',
+            updateTodo: 'PUT /todos/:id (requires auth)',
+            deleteTodo: 'DELETE /todos/:id (requires auth)',
+            toggleTodo: 'PATCH /todos/:id/toggle (requires auth)'
+        }
+    });
+});
+
 app.use(authRoute);
 app.use(todoRoute);
 
