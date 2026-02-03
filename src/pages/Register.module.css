@@ -1,0 +1,420 @@
+/* Main container - centers everything */
+.register_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+
+/* Floating dust particles */
+.particle {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Background container with animated gradient */
+.register_card {
+  position: relative;
+  width: 440px;
+  padding: 50px 40px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  z-index: 10;
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+/* Floating animation for card */
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Add glow effect on hover */
+.register_card:hover {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.5),
+    inset 0 0 30px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(99, 102, 241, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Title styling */
+.register_card h4 {
+  color: #0a0a12;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Input wrapper styling */
+.input_wrapper {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+/* Override Ant Design Input styles */
+.input_wrapper :global(.ant-input),
+.input_wrapper :global(.ant-input-password),
+.input_wrapper :global(.ant-input-affix-wrapper) {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 15px;
+  color: #ffffff !important;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.input_wrapper :global(.ant-input-password input) {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.input_wrapper :global(.ant-input-affix-wrapper-focused) {
+  box-shadow: none !important;
+}
+
+.input_wrapper :global(.ant-input::placeholder),
+.input_wrapper :global(.ant-input-password input::placeholder) {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.input_wrapper :global(.ant-input:hover),
+.input_wrapper :global(.ant-input-password:hover),
+.input_wrapper :global(.ant-input-affix-wrapper:hover) {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+.input_wrapper :global(.ant-input:focus),
+.input_wrapper :global(.ant-input-password:focus),
+.input_wrapper :global(.ant-input-password-focused),
+.input_wrapper :global(.ant-input-affix-wrapper:focus),
+.input_wrapper :global(.ant-input-affix-wrapper-focused) {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: #667eea !important;
+  box-shadow: 
+    0 0 20px rgba(102, 126, 234, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.1) !important;
+  outline: none !important;
+}
+
+.input_wrapper :global(.ant-input-password .ant-input-suffix) {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.input_wrapper :global(.ant-input-password .anticon) {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Animated background gradients */
+.register_container::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #4facfe 75%,
+    #667eea 100%
+  );
+  animation: gradientShift 15s ease infinite;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+@keyframes gradientShift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-30%, -30%) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+/* Floating particles background effect - Layer 1 */
+.register_container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.4) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+  background-size: 
+    550px 550px,
+    350px 350px,
+    250px 250px,
+    450px 450px,
+    650px 650px;
+  background-position: 
+    0 0,
+    40px 60px,
+    130px 270px,
+    70px 100px,
+    150px 50px;
+  animation: particleFloat 120s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Stars layer - twinkling effect */
+.register_card::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgba(255, 255, 255, 1) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
+  background-size: 
+    200px 200px,
+    300px 300px,
+    400px 400px;
+  background-position: 
+    0 0,
+    50px 50px,
+    100px 100px;
+  animation: twinkle 5s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Additional particle layer - glowing orbs */
+.register_card::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(240, 147, 251, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 60% 60%, rgba(79, 172, 254, 0.1) 0%, transparent 50%);
+  background-size: 
+    400px 400px,
+    500px 500px,
+    350px 350px,
+    450px 450px;
+  animation: orbFloat 25s ease-in-out infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-50px, 50px) scale(0.9);
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px);
+  }
+  50% {
+    transform: translateY(-60px) translateX(-20px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(30px);
+  }
+}
+
+/* Scroll effect - subtle parallax on scroll */
+@media (prefers-reduced-motion: no-preference) {
+  .register_card {
+    transition: transform 0.1s ease-out;
+  }
+}
+
+/* Add a subtle shimmer effect */
+.register_card > *:not(h4) {
+  position: relative;
+  overflow: hidden;
+}
+
+.input_wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .register_card {
+    width: 90%;
+    padding: 40px 30px;
+  }
+  
+  .register_card h4 {
+    font-size: 26px;
+  }
+}
+
+/* Register button styling */
+.register_button {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.register_button :global(.ant-btn) {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.register_button :global(.ant-btn:hover) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.register_button :global(.ant-btn:active) {
+  transform: translateY(0px);
+}
+
+.register_button :global(.ant-btn:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.register_button :global(.ant-btn::before) {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.register_button :global(.ant-btn:hover::before) {
+  left: 100%;
+}
+
+/* Additional helper text styling */
+.helper_text {
+  font-family:'Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif';
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.helper_text a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.helper_text a:hover {
+  color: #2d6cdb;
+  text-decoration: underline;
+}

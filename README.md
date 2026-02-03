@@ -54,16 +54,6 @@ MongoTodo/
 └── package.json
 ```
 
-## Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-DB_URL=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-PORT=8000
-```
-
 ## Installation & Setup
 
 ### 1. Clone the repository
